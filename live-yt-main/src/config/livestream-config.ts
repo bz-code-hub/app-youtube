@@ -22,10 +22,9 @@ export const videoConfig = {
   //   Just ID: "TkRmrPQDPFw"
   videoId: "https://www.youtube.com/shorts/VsWdwMfr6A0",
 
-  // 🎬 VIMEO: Paste the complete embed code provided by Vimeo (use SINGLE quotes!)
-  // Example:
-  // vimeoEmbedCode: '<div style="padding:177.78% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1138111783?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Vimeo video"></iframe></div><script src="https://player.vimeo.com/api/player.js"><\/script>',
-  vimeoEmbedCode: "",
+  // 🎬 VIMEO: Paste the complete embed code provided by Vimeo
+  // Just replace the video ID (1138111783) with your own Vimeo video ID
+  vimeoEmbedCode: '<div style="padding:177.78% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1138111783?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Vimeo video"></iframe></div><script src="https://player.vimeo.com/api/player.js"><\/script>',
 
   // 🐼 PANDA VIDEO: Paste the complete embed code provided by Panda Video
   // Example: <div style="position:relative;padding-top:75%;"><iframe id="panda-xxxxx"...></iframe></div>
