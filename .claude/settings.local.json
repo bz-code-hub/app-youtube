@@ -9,7 +9,10 @@
       "Bash(netstat:*)",
       "Bash(timeout 5 bash:*)",
       "Bash(ls -la \"c:\\Users\\Rafael Silva\\Desktop\\apps\\app-live-youtube\\live-yt-main\\public\\images 2>/dev/null || ls -la c:UsersRafael\" SilvaDesktopappsapp-live-youtubelive-yt-mainpublic)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(rm:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []

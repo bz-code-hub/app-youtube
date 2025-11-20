@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { Heart, Eye, X } from "lucide-react";
+import { Heart } from "lucide-react";
 import { videoConfig, channelConfig } from "@/config/livestream-config";
 
 interface VideoPlayerProps {
@@ -201,11 +200,8 @@ export const VideoPlayer = ({ videoId = videoConfig.videoId }: VideoPlayerProps)
 
     const triggerDrop = () => {
       if (w.__VIEWER_DROP_DONE) {
-        console.log('⚠️ Drop já foi acionado uma vez');
         return;
       }
-      console.log(`🔴 VIEWER DROP! From ~${videoConfig.viewers.beforeDrop.max} to ${videoConfig.viewers.afterDrop.min}-${videoConfig.viewers.afterDrop.max}`);
-      console.log('✅ Estado alterado com sucesso');
       w.__VIEWER_DROP_DONE = true;
       setHasDropped(true);
       const range = videoConfig.viewers.afterDrop.max - videoConfig.viewers.afterDrop.min;
@@ -227,8 +223,6 @@ export const VideoPlayer = ({ videoId = videoConfig.videoId }: VideoPlayerProps)
       let player: any = null;
 
       const onPlayerReady = () => {
-        console.log('✅ YouTube player ready - esperando por ', videoConfig.viewers.dropTimeInSeconds, 's');
-
         checkInterval = setInterval(() => {
           if (player && player.getCurrentTime) {
             const currentTime = player.getCurrentTime();
@@ -242,7 +236,6 @@ export const VideoPlayer = ({ videoId = videoConfig.videoId }: VideoPlayerProps)
 
       const initPlayer = () => {
         if (!w.YT || !w.YT.Player) {
-          console.log('⏳ Waiting for YouTube API...');
           return;
         }
 
@@ -264,23 +257,18 @@ export const VideoPlayer = ({ videoId = videoConfig.videoId }: VideoPlayerProps)
             onReady: onPlayerReady,
           },
         });
-
-        console.log('🎬 YouTube player initialized');
       };
 
       if (w.YT && w.YT.Player) {
         initPlayer();
       } else {
         w.onYouTubeIframeAPIReady = () => {
-          console.log('✅ YouTube API loaded');
           initPlayer();
         };
       }
 
-      console.log('📍 Fallback timeout configurado para', videoConfig.viewers.dropTimeInSeconds, 'segundos');
       dropTimeout = setTimeout(() => {
         if (!w.__VIEWER_DROP_DONE) {
-          console.log('📍 Drop acionado via fallback (backup)');
           triggerDrop();
         }
       }, videoConfig.viewers.dropTimeInSeconds * 1000);
@@ -326,11 +314,8 @@ export const VideoPlayer = ({ videoId = videoConfig.videoId }: VideoPlayerProps)
         container.appendChild(newScript);
       });
 
-      console.log('✅ Panda Video player loaded');
-
       dropTimeout = setTimeout(() => {
         if (!w.__VIEWER_DROP_DONE) {
-          console.log('⏰ Panda Video: forcing drop after configured time');
           triggerDrop();
         }
       }, videoConfig.viewers.dropTimeInSeconds * 1000);
@@ -365,8 +350,6 @@ export const VideoPlayer = ({ videoId = videoConfig.videoId }: VideoPlayerProps)
         }
       }, 1000);
 
-      console.log('✅ Direct video player loaded');
-
       dropTimeout = setTimeout(() => {
         if (!w.__VIEWER_DROP_DONE) {
           triggerDrop();
@@ -393,8 +376,6 @@ export const VideoPlayer = ({ videoId = videoConfig.videoId }: VideoPlayerProps)
         newScript.textContent = oldScript.textContent;
         oldScript.parentNode?.replaceChild(newScript, oldScript);
       });
-
-      console.log('✅ Vturb player loaded');
 
       dropTimeout = setTimeout(() => {
         if (!w.__VIEWER_DROP_DONE) {

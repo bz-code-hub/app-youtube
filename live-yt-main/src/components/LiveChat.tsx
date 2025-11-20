@@ -166,6 +166,23 @@ export const LiveChat = () => {
     }
   };
 
+  const handleEmojiClick = () => {
+    const newMessage: ChatMessage = {
+      id: `msg-${Date.now()}-emoji`,
+      user: "Anonymous User",
+      username: "@anonymous_user",
+      initials: "AU",
+      message: "😊",
+      color: "bg-gray-500",
+    };
+
+    setMessages(prev => {
+      // Keep only last 7 messages
+      const updated = [...prev, newMessage];
+      return updated.slice(-7);
+    });
+  };
+
   // Auto-scroll to bottom when messages change
   useEffect(() => {
     if (messagesContainerRef.current) {
@@ -232,9 +249,9 @@ export const LiveChat = () => {
         <div className="flex items-start justify-between gap-3">
           {/* Left side: Title */}
           <div className="flex-1">
-            <h3 className={`font-semibold text-base ${themeConfig.darkMode ? 'text-zinc-100' : 'text-gray-900'}`}>Live chat</h3>
+            <h3 className={`font-semibold text-base ${themeConfig.darkMode ? 'text-zinc-100' : 'text-gray-900'}`}>{chatConfig.title}</h3>
             <div className="flex items-center gap-2 mt-1">
-              <p className={`text-xs ${themeConfig.darkMode ? 'text-zinc-300' : 'text-gray-500'}`}>Top messages</p>
+              <p className={`text-xs ${themeConfig.darkMode ? 'text-zinc-300' : 'text-gray-500'}`}>{chatConfig.topMessagesLabel}</p>
               <div className="flex items-center gap-1">
                 <Users className={`w-4 h-4 ${themeConfig.darkMode ? 'text-zinc-400' : 'text-gray-400'}`} />
                 <span className={`text-xs ${themeConfig.darkMode ? 'text-zinc-400' : 'text-gray-400'}`}>{(currentViewers / 1000).toFixed(1)}k</span>
@@ -297,21 +314,22 @@ export const LiveChat = () => {
       <div className={`border-t px-4 py-3 flex-shrink-0 ${themeConfig.darkMode ? 'border-zinc-800 bg-zinc-900' : 'border-gray-200 bg-white'}`}>
         <form onSubmit={handleSendMessage} className="w-full">
           <div className="relative flex items-center gap-3">
-            {/* Emoji Button */}
-            <button
-              type="button"
-              className={`p-1 rounded-full transition-colors flex-shrink-0 ${themeConfig.darkMode ? 'hover:bg-zinc-800 text-zinc-300' : 'hover:bg-gray-100 text-gray-600'}`}
-            >
-              <Smile className="w-5 h-5" />
-            </button>
-
-            {/* Input */}
-            <Input
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              placeholder={chatConfig.inputPlaceholder}
-              className={`rounded-full h-9 px-4 text-sm focus:ring-0 focus:outline-none flex-1 transition-all ${themeConfig.darkMode ? 'bg-zinc-800 text-zinc-100 placeholder:text-zinc-400 border border-zinc-700 focus:bg-zinc-700' : 'bg-gray-50 text-gray-900 placeholder:text-gray-500 border border-gray-200 focus:bg-white'}`}
-            />
+            {/* Input with Emoji Button inside */}
+            <div className="relative flex-1">
+              <Input
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                placeholder={chatConfig.inputPlaceholder}
+                className={`rounded-full h-9 px-4 pr-12 text-sm focus:ring-0 focus:outline-none w-full transition-all ${themeConfig.darkMode ? 'bg-zinc-800 text-zinc-100 placeholder:text-zinc-400 border border-zinc-700 focus:bg-zinc-700' : 'bg-gray-50 text-gray-900 placeholder:text-gray-500 border border-gray-200 focus:bg-white'}`}
+              />
+              <button
+                type="button"
+                onClick={handleEmojiClick}
+                className={`absolute right-2 top-1/2 transform -translate-y-1/2 p-1 rounded-full transition-colors ${themeConfig.darkMode ? 'hover:bg-zinc-700 text-zinc-300' : 'hover:bg-gray-100 text-gray-600'}`}
+              >
+                <Smile className="w-5 h-5" />
+              </button>
+            </div>
 
             {/* Dollar Button */}
             <button

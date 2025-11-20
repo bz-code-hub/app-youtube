@@ -35,9 +35,6 @@ export const videoConfig = {
   // Supports: MP4, WebM, OGG
   directVideoUrl: "",
 
-  // 📝 Title displayed on the broadcast
-  title: "Live Stream Broadcast",
-
   // 📊 Live viewer configuration
   viewers: {
     // Initial viewer count
@@ -80,12 +77,6 @@ export const themeConfig = {
 // ═══════════════════════════════════════════════════════════════
 
 export const channelConfig = {
-  // Channel name
-  name: "Sports News Live",
-
-  // Initials displayed in avatar (2 letters)
-  initials: "SN",
-
   // 🖼️ Profile image URL (optional)
   // Simply name your image "youtube" with any extension (jpg, jpeg, png, gif, webp)
   // Place it in /public/images/ folder
@@ -93,9 +84,6 @@ export const channelConfig = {
   // Or specify a custom path: "/images/your-image.jpg"
   // Leave empty "" to use initials
   profileImageUrl: "youtube",
-
-  // Welcome message
-  welcomeMessage: "Welcome to the live stream! 🎥",
 };
 
 // ═══════════════════════════════════════════════════════════════
@@ -148,8 +136,11 @@ export const ctaButtonConfig = {
 // ═══════════════════════════════════════════════════════════════
 
 export const chatConfig = {
-  // 📱 How many comments to show on screen at once
-  visibleComments: 7,
+  // 💬 Chat title
+  title: "Live chat",
+
+  // 📌 Top messages label
+  topMessagesLabel: "Top messages",
 
   // 🎨 Message input placeholder
   inputPlaceholder: "Chat...",
