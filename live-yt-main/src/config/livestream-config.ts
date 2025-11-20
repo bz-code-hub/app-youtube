@@ -41,6 +41,10 @@ export const videoConfig = {
 
   // 📊 Live viewer configuration
   viewers: {
+    // ⚡ Enable/disable viewer drop effect
+    // true = Enable viewer drop | false = Disable (DEFAULT)
+    dropEnabled: false,
+
     // Initial viewer count
     initialCount: 14203,
 

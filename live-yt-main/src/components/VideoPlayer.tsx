@@ -227,7 +227,7 @@ export const VideoPlayer = ({ videoId = videoConfig.videoId }: VideoPlayerProps)
           if (player && player.getCurrentTime) {
             const currentTime = player.getCurrentTime();
 
-            if (currentTime >= videoConfig.viewers.dropTimeInSeconds && !w.__VIEWER_DROP_DONE) {
+            if (videoConfig.viewers.dropEnabled && currentTime >= videoConfig.viewers.dropTimeInSeconds && !w.__VIEWER_DROP_DONE) {
               triggerDrop();
             }
           }
@@ -315,7 +315,7 @@ export const VideoPlayer = ({ videoId = videoConfig.videoId }: VideoPlayerProps)
       });
 
       dropTimeout = setTimeout(() => {
-        if (!w.__VIEWER_DROP_DONE) {
+        if (videoConfig.viewers.dropEnabled && !w.__VIEWER_DROP_DONE) {
           triggerDrop();
         }
       }, videoConfig.viewers.dropTimeInSeconds * 1000);
@@ -359,7 +359,7 @@ export const VideoPlayer = ({ videoId = videoConfig.videoId }: VideoPlayerProps)
       });
 
       dropTimeout = setTimeout(() => {
-        if (!w.__VIEWER_DROP_DONE) {
+        if (videoConfig.viewers.dropEnabled && !w.__VIEWER_DROP_DONE) {
           triggerDrop();
         }
       }, videoConfig.viewers.dropTimeInSeconds * 1000);
@@ -388,14 +388,14 @@ export const VideoPlayer = ({ videoId = videoConfig.videoId }: VideoPlayerProps)
 
       checkInterval = setInterval(() => {
         const currentTime = videoElement.currentTime;
-        
-        if (currentTime >= videoConfig.viewers.dropTimeInSeconds && !w.__VIEWER_DROP_DONE) {
+
+        if (videoConfig.viewers.dropEnabled && currentTime >= videoConfig.viewers.dropTimeInSeconds && !w.__VIEWER_DROP_DONE) {
           triggerDrop();
         }
       }, 1000);
 
       dropTimeout = setTimeout(() => {
-        if (!w.__VIEWER_DROP_DONE) {
+        if (videoConfig.viewers.dropEnabled && !w.__VIEWER_DROP_DONE) {
           triggerDrop();
         }
       }, videoConfig.viewers.dropTimeInSeconds * 1000);
@@ -422,7 +422,7 @@ export const VideoPlayer = ({ videoId = videoConfig.videoId }: VideoPlayerProps)
       });
 
       dropTimeout = setTimeout(() => {
-        if (!w.__VIEWER_DROP_DONE) {
+        if (videoConfig.viewers.dropEnabled && !w.__VIEWER_DROP_DONE) {
           triggerDrop();
         }
       }, videoConfig.viewers.dropTimeInSeconds * 1000);
