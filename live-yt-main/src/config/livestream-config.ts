@@ -1,226 +1,106 @@
 /**
- * ⚙️ LIVESTREAM CONFIGURATION
- *
- * This file centralizes ALL editable settings for your livestream.
- * Edit here to fully customize your live broadcast!
+ * LIVESTREAM CONFIGURATION
+ * Edit this file to customize your live broadcast settings
  */
 
 // ═══════════════════════════════════════════════════════════════
-// 📹 VIDEO CONFIGURATION
+// VIDEO CONFIGURATION
 // ═══════════════════════════════════════════════════════════════
 
 export const videoConfig = {
-  // 🎬 VIDEO TYPE
-  // Choose: "youtube", "vimeo", "panda", "vturb" or "direct"
   videoType: "youtube" as "youtube" | "vimeo" | "panda" | "vturb" | "direct",
-
-  // 📹 YOUTUBE: Paste the complete video URL or just the video ID
-  // Examples:
-  //   Full URL: "https://www.youtube.com/watch?v=TkRmrPQDPFw"
-  //   Short URL: "https://youtu.be/TkRmrPQDPFw"
-  //   Shorts: "https://www.youtube.com/shorts/VsWdwMfr6A0"
-  //   Just ID: "TkRmrPQDPFw"
   videoId: "https://www.youtube.com/shorts/VsWdwMfr6A0",
-
-  // 🎬 VIMEO: Paste the complete embed code provided by Vimeo
-  // Just replace the video ID (1138111783) with your own Vimeo video ID
   vimeoEmbedCode: '',
-
-  // 🐼 PANDA VIDEO: Paste the complete embed code provided by Panda Video
-  // Example: <div style="position:relative;padding-top:75%;"><iframe id="panda-xxxxx"...></iframe></div>
   pandaEmbedCode: '',
-
-  // 📺 VTURB: Paste the entire script provided by Vturb
-  // Example: <div id="vid_xxxxxxxxx" style="..."></div><script...></script>
   vturbScript: '',
-
-  // 🔗 DIRECT LINK: Paste a direct link to your video file
-  // Example: https://s3.planilhinha.cloud/1_original.mp4
-  // Supports: MP4, WebM, OGG
   directVideoUrl: "",
 
-  // 📊 Live viewer configuration
   viewers: {
-    // ⚡ Enable/disable viewer drop effect
-    // true = Enable viewer drop | false = Disable (DEFAULT)
     dropEnabled: false,
-
-    // Initial viewer count
-    initialCount: 14203,
-
-    // Viewers BEFORE the drop (range)
-    beforeDrop: {
-      min: 14300,
-      max: 12500,
-    },
-
-    // Viewers AFTER the drop (range)
-    afterDrop: {
-      min: 350,
-      max: 400,
-    },
-
-    // ⏱️ Time in SECONDS when viewer drop occurs
-    // (198 seconds = 3 minutes and 18 seconds)
+    initialCount: 5000,
+    beforeDrop: { min: 5000, max: 7000 },
+    afterDrop: { min: 350, max: 400 },
     dropTimeInSeconds: 10,
-
-    // Update interval (in milliseconds)
     updateInterval: 3000,
   },
 };
 
 // ═══════════════════════════════════════════════════════════════
-// 🎨 THEME CONFIGURATION
+// THEME CONFIGURATION
 // ═══════════════════════════════════════════════════════════════
 
 export const themeConfig = {
-  // Dark mode toggle
-  // true = YouTube Dark Theme (almost black background)
-  // false = Light Theme (white background) - DEFAULT
   darkMode: true,
 };
 
 // ═══════════════════════════════════════════════════════════════
-// 👤 CHANNEL CONFIGURATION
+// CHANNEL CONFIGURATION
 // ═══════════════════════════════════════════════════════════════
 
 export const channelConfig = {
-  // 🖼️ Profile image URL (optional)
-  // Simply name your image "youtube" with any extension (jpg, jpeg, png, gif, webp)
-  // Place it in /public/images/ folder
-  // The system will automatically detect: youtube.jpg, youtube.jpeg, youtube.png, etc.
-  // Or specify a custom path: "/images/your-image.jpg"
-  // Leave empty "" to use initials
   profileImageUrl: "youtube",
 };
 
 // ═══════════════════════════════════════════════════════════════
-// 🔘 CALL TO ACTION BUTTON CONFIGURATION
+// CTA BUTTON CONFIGURATION
 // ═══════════════════════════════════════════════════════════════
 
 export const ctaButtonConfig = {
-  // Enable/disable button
   enabled: true,
-
-  // Button text
   text: "Watch Now!",
-
-  // Delay in seconds before button appears
   delayInSeconds: 10,
-
-  // Button link/URL
   link: "https://example.com",
-
-  // 🎨 BUTTON COLOR (choose ONE - set to true)
+  
   color: {
     red: true,
     blue: false,
     gray: false,
     black: false,
-    white: false,  // Default
+    white: false,
   },
 
-  // ✨ BUTTON EFFECTS (choose ONE or MORE - set to true)
   effects: {
-    pulse: false,      // Pulsing effect
-    glow: false,      // Glowing border effect
-    shake: false,     // Shaking effect
-    bounce: true,    // Bouncing effect
-    float: false,     // Floating up/down effect
+    pulse: false,
+    glow: false,
+    shake: false,
+    bounce: true,
+    float: false,
   },
 
-  // 🎯 BUTTON ICON (choose ONE - set to true)
   icon: {
-    click: true,       // Click/pointer icon (default)
-    gift: false,       // Gift icon
-    tag: false,        // Tag icon (offer/discount)
-    trending: false,   // Trending up icon (opportunity)
-    sparkles: false,   // Sparkles icon (special/highlight)
+    click: true,
+    gift: false,
+    tag: false,
+    trending: false,
+    sparkles: false,
   },
 };
 
 // ═══════════════════════════════════════════════════════════════
-// 💬 CHAT CONFIGURATION
+// CHAT CONFIGURATION
 // ═══════════════════════════════════════════════════════════════
 
 export const chatConfig = {
-  // 💬 Chat title
   title: "Live chat",
-
-  // 📌 Top messages label
   topMessagesLabel: "Top messages",
-
-  // 🎨 Message input placeholder
   inputPlaceholder: "Chat...",
-
-  // ⏱️ Interval between comments (in seconds)
-  // Set to 1 for comments to appear every 1 second
-  // Set to 2 for comments to appear every 2 seconds, etc.
   commentInterval: 1,
-
-  // 🔄 Loop comments
-  // If true, after the last comment it will restart from the first one
-  // If false, comments stop after the last one
   loopComments: true,
 };
 
 // ═══════════════════════════════════════════════════════════════
-// 📊 PIXELS TRACKING CONFIGURATION
+// TRACKING PIXELS CONFIGURATION
 // ═══════════════════════════════════════════════════════════════
 
-/**
- * 💡 HOW TO ADD YOUR PIXELS:
- *
- * 1. Go to your platform (Facebook, TikTok, Google Analytics)
- * 2. Get the pixel/tracking code
- * 3. Copy the ENTIRE script block (including <script> tags)
- * 4. Paste it in the corresponding field below using backticks (`)
- * 5. Leave empty "" if you don't use that platform
- *
- * EXAMPLE for Facebook:
- * facebookPixel: `<!-- Meta Pixel Code -->
- * <script>
- * !function(f,b,e,v,n,t,s)
- * {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
- * ... (rest of your script)
- * </script>
- * <!-- End Meta Pixel Code -->`
- */
-
 export const pixelsConfig = {
-  // 🔵 FACEBOOK PIXEL
-  // Paste your complete Facebook pixel script here (use backticks)
-  // Leave empty "" if you don't have one
   facebookPixel: ``,
-
-  // 🎵 TIKTOK PIXEL
-  // Paste your complete TikTok pixel script here (use backticks)
-  // Leave empty "" if you don't have one
   tiktokPixel: ``,
-
-  // 🔴 GOOGLE ANALYTICS
-  // Paste your complete Google Analytics script here (use backticks)
-  // Leave empty "" if you don't have one
   googleAnalyticsPixel: ``,
 };
 
 // ═══════════════════════════════════════════════════════════════
-// 📝 CHAT COMMENTS (SIMPLE LIST WITH TIMING)
+// CHAT COMMENTS
 // ═══════════════════════════════════════════════════════════════
-
-/**
- * 💡 HOW TO EDIT COMMENTS:
- *
- * Each comment has 2 fields:
- * - user: User name (string)
- * - message: Comment text (string)
- *
- * Comments appear automatically based on the "commentInterval"
- * setting in chatConfig (default: 1 second between each comment)
- *
- * Example:
- * { user: "John Doe", message: "Great stream!" }
- */
 
 export const comments = [
   { user: "Marcus Johnson", message: "What an incredible match! Both teams are playing amazing!" },
